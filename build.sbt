@@ -15,6 +15,7 @@ libraryDependencies ++= Seq(
   "tomcat" % "jasper-runtime" % "5.5.23",
   "tomcat" % "jsp-api" % "5.5.23",
   "tomcat" % "servlet-api" % "5.5.23",
+  "com.goldmansachs" % "gs-collections" % "6.1.0",
   Logging.logbackClassic,
   Logging.logbackCore,
   Logging.slf4jApi,
