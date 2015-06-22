@@ -1,1 +1,6 @@
 /target/
+*.swp
+.settings
+.project
+.classpath
+blacklab.iml
