@@ -24,6 +24,8 @@ libraryDependencies ++= Seq(
 
 organization := "nl.inl"
 
+scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head }
+
 publishMavenStyle := true
 
 publishArtifact in Test := false
@@ -47,7 +49,7 @@ pomExtra :=
     </developer>
   </developers>
 
-releaseSettings
+bintrayPackage := s"${organization.value}:${name.value}_${scalaBinaryVersion.value}",
 
 releaseVersion := { ver =>
   val snapshot = "(.*-ALLENAI-\\d+)-SNAPSHOT".r
