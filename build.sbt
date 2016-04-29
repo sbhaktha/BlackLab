@@ -49,7 +49,7 @@ pomExtra :=
     </developer>
   </developers>
 
-bintrayPackage := s"${organization.value}:${name.value}_${scalaBinaryVersion.value}",
+bintrayPackage := s"${organization.value}:${name.value}_${scalaBinaryVersion.value}"
 
 releaseVersion := { ver =>
   val snapshot = "(.*-ALLENAI-\\d+)-SNAPSHOT".r
