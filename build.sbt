@@ -1,3 +1,4 @@
+import org.allenai.plugins.CoreDependencies
 import org.allenai.plugins.CoreDependencies._
 import sbtrelease._
 import sbtrelease.ReleasePlugin.ReleaseKeys._
