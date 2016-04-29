@@ -29,15 +29,13 @@ publishArtifact in Test := false
 
 pomIncludeRepository := { _ => false }
 
-licenses := Seq("Apache 2.0" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt"))
+licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
 homepage := Some(url("https://github.com/allenai/BlackLab"))
 
 scmInfo := Some(ScmInfo(
   url("https://github.com/allenai/BlackLab"),
   "https://github.com/allenai/BlackLab.git"))
-
-ReleaseKeys.publishArtifactsAction := PgpKeys.publishSigned.value
 
 pomExtra :=
   <developers>
@@ -47,8 +45,6 @@ pomExtra :=
       <email>dev-role@allenai.org</email>
     </developer>
   </developers>
-
-PublishTo.ai2Public
 
 releaseSettings
 
