@@ -92,3 +92,11 @@ javacOptions in doc := Seq(
   "-group", "Examples and tests", "nl.inl.blacklab.example:nl.inl.blacklab.indexers.*",
   "-group", "Supporting classes", "nl.inl.blacklab.filter:nl.inl.blacklab.forwardindex:nl.inl.blacklab.externalstorage:nl.inl.blacklab.suggest:nl.inl.util",
   "-Xdoclint:none")
+
+
+lazy val blacklabRoot = Project(
+  id = "blacklabRoot",
+  base = file("."),
+  settings = buildSettings ++ releaseProcessSetting
+).enablePlugins(LibraryPlugin)
+
