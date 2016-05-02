@@ -35,6 +35,7 @@ lazy val buildSettings = Seq(
   scmInfo := Some(ScmInfo(
     url("https://github.com/allenai/BlackLab"),
     "https://github.com/allenai/BlackLab.git")),
+  releasePublishArtifactsAction := PgpKeys.publishSigned.value,
   bintrayPackage := s"${organization.value}:${name.value}_${scalaBinaryVersion.value}",
   pomExtra :=
     <developers>
