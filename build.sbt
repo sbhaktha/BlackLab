@@ -23,6 +23,22 @@ libraryDependencies ++= Seq(
 //  "org.slf4j" % "log4j-over-slf4j" % Logging.slf4jVersion)
   "org.slf4j" % "jcl-over-slf4j" % "1.7.7")
 
+// Override the problematic new release plugin.
+lazy val releaseProcessSetting = releaseProcess := Seq(
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  publishArtifacts,
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)
+
+
 lazy val buildSettings = Seq(
   organization := "nl.inl.blacklab",
   scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
