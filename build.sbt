@@ -4,7 +4,7 @@ import org.allenai.plugins.CoreDependencies
 import sbtrelease._
 import sbtrelease.ReleaseStateTransformations._
 
-name := "BlackLab"
+name := "blacklab"
 
 libraryDependencies ++= Seq(
   "org.scalacheck" %% "scalacheck" % "1.12.0" % Test,
@@ -25,7 +25,7 @@ libraryDependencies ++= Seq(
   "org.slf4j" % "jcl-over-slf4j" % "1.7.7")
 
 lazy val buildSettings = Seq(
-  organization := "nl.inl",
+  organization := "nl.inl.blacklab",
   scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
   publishMavenStyle := true,
   publishArtifact in Test := false,
