@@ -62,7 +62,7 @@ lazy val buildSettings = Seq(
     </developers>)
 
 releaseVersion := { ver =>
-  val snapshot = "(.*-ALLENAI-\\d+)-SNAPSHOT".r
+  val snapshot = "(.*-ALLENAI-\\d+)".r
   ver match {
     case snapshot(v) => v
     case _ => versionFormatError
