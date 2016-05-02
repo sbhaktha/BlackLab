@@ -1,4 +1,3 @@
-import AssemblyKeys._
 import sbt._
 import org.allenai.plugins.CoreDependencies
 import sbtrelease._
