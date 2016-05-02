@@ -22,13 +22,15 @@ import java.util.List;
 
 import nl.inl.blacklab.search.Hits;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Abstract base class for a property of a hit, like document title, hit text, right context, etc.
  */
 public abstract class HitProperty implements Comparator<Object> {
-	protected static final Logger logger = Logger.getLogger(HitProperty.class);
+	protected static final Logger logger = LoggerFactory.getLogger(HitProperty.class);
 
 	/** The Hits object we're looking at */
 	protected Hits hits;

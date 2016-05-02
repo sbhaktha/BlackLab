@@ -21,7 +21,9 @@ import java.util.List;
 import nl.inl.blacklab.search.grouping.HitPropValue;
 import nl.inl.blacklab.search.grouping.PropValSerializeUtil;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Abstract base class for criteria on which to group DocResult objects. Subclasses implement
@@ -29,7 +31,7 @@ import org.apache.log4j.Logger;
  * ...)
  */
 public abstract class DocProperty {
-	protected static final Logger logger = Logger.getLogger(DocProperty.class);
+	protected static final Logger logger = LoggerFactory.getLogger(DocProperty.class);
 
 	/** Reverse comparison result or not? */
 	protected boolean reverse = false;

@@ -6,7 +6,7 @@ import nl.inl.blacklab.forwardindex.ForwardIndex;
 import nl.inl.util.FileUtil;
 import nl.inl.util.Timer;
 
-import org.apache.log4j.BasicConfigurator;
+//import org.apache.log4j.BasicConfigurator;
 
 /**
  * Executes a batch of fetch operations on a forward index.
@@ -18,7 +18,7 @@ public class BatchForwardIndex {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws Exception {
 
-		BasicConfigurator.configure(); // suppress log4j warning
+		//BasicConfigurator.configure(); // suppress log4j warning
 
 		int fileArgNumber = 0;
 		File indexDir = null, inputFile = null;

@@ -1,7 +1,8 @@
+import AssemblyKeys._
+import sbt._
 import org.allenai.plugins.CoreDependencies
-import org.allenai.plugins.CoreDependencies._
 import sbtrelease._
-import sbtrelease.ReleasePlugin.ReleaseKeys._
+import sbtrelease.ReleaseStateTransformations._
 
 name := "BlackLab"
 
@@ -17,39 +18,32 @@ libraryDependencies ++= Seq(
   "tomcat" % "jsp-api" % "5.5.23",
   "tomcat" % "servlet-api" % "5.5.23",
   "com.goldmansachs" % "gs-collections" % "6.1.0",
-  Logging.logbackClassic,
-  Logging.logbackCore,
-  Logging.slf4jApi,
-  "org.slf4j" % "log4j-over-slf4j" % Logging.slf4jVersion)
+//  Logging.logbackClassic,
+//  Logging.logbackCore,
+//  Logging.slf4jApi,
+//  "org.slf4j" % "log4j-over-slf4j" % Logging.slf4jVersion)
+  "org.slf4j" % "jcl-over-slf4j" % "1.7.7")
 
-organization := "nl.inl"
-
-scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head }
-
-publishMavenStyle := true
-
-publishArtifact in Test := false
-
-pomIncludeRepository := { _ => false }
-
-licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
-
-homepage := Some(url("https://github.com/allenai/BlackLab"))
-
-scmInfo := Some(ScmInfo(
-  url("https://github.com/allenai/BlackLab"),
-  "https://github.com/allenai/BlackLab.git"))
-
-pomExtra :=
-  <developers>
-    <developer>
-      <id>allenai-dev-role</id>
-      <name>Allen Institute for Artificial Intelligence</name>
-      <email>dev-role@allenai.org</email>
-    </developer>
-  </developers>
-
-bintrayPackage := s"${organization.value}:${name.value}_${scalaBinaryVersion.value}"
+lazy val buildSettings = Seq(
+  organization := "nl.inl",
+  scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
+  publishMavenStyle := true,
+  publishArtifact in Test := false,
+  pomIncludeRepository := { _ => false },
+  licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")),
+  homepage := Some(url("https://github.com/allenai/BlackLab")),
+  scmInfo := Some(ScmInfo(
+    url("https://github.com/allenai/BlackLab"),
+    "https://github.com/allenai/BlackLab.git")),
+  bintrayPackage := s"${organization.value}:${name.value}_${scalaBinaryVersion.value}",
+  pomExtra :=
+    <developers>
+      <developer>
+        <id>allenai-dev-role</id>
+        <name>Allen Institute for Artificial Intelligence</name>
+        <email>dev-role@allenai.org</email>
+      </developer>
+    </developers>)
 
 releaseVersion := { ver =>
   val snapshot = "(.*-ALLENAI-\\d+)-SNAPSHOT".r
@@ -59,22 +53,22 @@ releaseVersion := { ver =>
   }
 }
 
-nextVersion := { ver =>
-  val release = "(.*-ALLENAI)-(\\d+)".r
+//nextVersion := { ver =>
+//  val release = "(.*-ALLENAI)-(\\d+)".r
   // pattern matching on Int
-  object Int {
-    def unapply(s: String): Option[Int] = try {
-      Some(s.toInt)
-    } catch {
-      case _: java.lang.NumberFormatException => None
-    }
-  }
-
-  ver match {
-    case release(prefix, Int(number)) => s"$prefix-${number+1}-SNAPSHOT"
-    case _ => versionFormatError
-  }
-}
+//  object Int {
+//    def unapply(s: String): Option[Int] = try {
+//      Some(s.toInt)
+//    } catch {
+//      case _: java.lang.NumberFormatException => None
+//    }
+//  }
+//
+//  ver match {
+//    case release(prefix, Int(number)) => s"$prefix-${number+1}-SNAPSHOT"
+//    case _ => versionFormatError
+//  }
+//}
 
 javacOptions in doc := Seq(
   "-source", "1.7",
