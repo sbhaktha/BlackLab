@@ -54,22 +54,22 @@ releaseVersion := { ver =>
   }
 }
 
-//nextVersion := { ver =>
-//  val release = "(.*-ALLENAI)-(\\d+)".r
+releaseNextVersion := { ver =>
+  val release = "(.*-ALLENAI)-(\\d+)".r
   // pattern matching on Int
-//  object Int {
-//    def unapply(s: String): Option[Int] = try {
-//      Some(s.toInt)
-//    } catch {
-//      case _: java.lang.NumberFormatException => None
-//    }
-//  }
+  object Int {
+    def unapply(s: String): Option[Int] = try {
+      Some(s.toInt)
+    } catch {
+      case _: java.lang.NumberFormatException => None
+    }
+  }
 
-//  ver match {
-//    case release(prefix, Int(number)) => s"$prefix-${number+1}-SNAPSHOT"
-//    case _ => versionFormatError
-//  }
-//}
+  ver match {
+    case release(prefix, Int(number)) => s"$prefix-${number+1}-SNAPSHOT"
+    case _ => versionFormatError
+  }
+}
 
 javacOptions in doc := Seq(
   "-source", "1.7",
