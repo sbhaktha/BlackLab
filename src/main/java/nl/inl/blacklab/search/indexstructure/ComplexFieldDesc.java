@@ -237,4 +237,4 @@ public class ComplexFieldDesc extends BaseFieldDesc {
 			mainProperty = props.get(mainPropertyName);
 	}
 
- }
+}
