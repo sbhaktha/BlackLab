@@ -29,10 +29,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.gs.collections.impl.factory.Maps;
-//import org.apache.log4j.Logger;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * Keeps a first-come-first-serve list of unique terms.
@@ -50,7 +47,7 @@ class TermsImplV3 extends Terms {
 	/** Number of bytes per int */
 	private static final int BYTES_PER_INT = Integer.SIZE / Byte.SIZE;
 
-	protected static final Logger logger = LoggerFactory.getLogger(TermsImplV3.class);
+	protected static final Logger logger = Logger.getLogger(TermsImplV3.class);
 
 	/** Search mode only: the terms, by index number. */
 	String[] terms;

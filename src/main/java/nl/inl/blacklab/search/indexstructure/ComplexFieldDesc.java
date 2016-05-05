@@ -10,14 +10,12 @@ import nl.inl.blacklab.index.complex.ComplexFieldUtil;
 import nl.inl.blacklab.index.complex.ComplexFieldUtil.BookkeepFieldType;
 import nl.inl.util.StringUtil;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.apache.lucene.index.IndexReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /** Description of a complex field */
 public class ComplexFieldDesc extends BaseFieldDesc {
-	protected static final Logger logger = LoggerFactory.getLogger(ComplexFieldDesc.class);
+	protected static final Logger logger = Logger.getLogger(ComplexFieldDesc.class);
 
 	/** This complex field's properties */
 	private Map<String, PropertyDesc> props;

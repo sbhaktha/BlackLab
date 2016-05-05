@@ -44,22 +44,19 @@ import nl.inl.util.TarGzipReader;
 import nl.inl.util.TarGzipReader.FileHandler;
 import nl.inl.util.UnicodeReader;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.FieldType;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Tool for indexing. Reports its progress to an IndexListener.
  */
 public class Indexer {
 
-	//static final Logger logger = Logger.getLogger(Searcher.class);
-        static final Logger logger = LoggerFactory.getLogger(Searcher.class);
+	static final Logger logger = Logger.getLogger(Searcher.class);
 
 	/** Our index */
 	Searcher searcher;

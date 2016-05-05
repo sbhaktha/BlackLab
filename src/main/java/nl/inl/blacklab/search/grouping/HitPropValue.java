@@ -7,9 +7,7 @@ import java.util.List;
 import nl.inl.blacklab.search.Hits;
 import nl.inl.util.StringUtil;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * A concrete value of a HitProperty of a Hit
@@ -19,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * sorting of large results sets)
  */
 public abstract class HitPropValue implements Comparable<Object> {
-	protected static final Logger logger = LoggerFactory.getLogger(HitPropValue.class);
+	protected static final Logger logger = Logger.getLogger(HitPropValue.class);
 
 	/**
 	 * Collator to use for string comparison while sorting/grouping

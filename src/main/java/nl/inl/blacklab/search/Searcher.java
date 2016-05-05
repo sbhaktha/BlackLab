@@ -61,6 +61,7 @@ import nl.inl.util.LuceneUtil;
 import nl.inl.util.Utilities;
 import nl.inl.util.VersionFile;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
 import org.apache.lucene.document.Document;
@@ -89,8 +90,6 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.LockObtainFailedException;
 import org.apache.lucene.util.Bits;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The main interface into the BlackLab library. The Searcher object is instantiated with an open
@@ -105,7 +104,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Searcher {
 
-	protected static final Logger logger = LoggerFactory.getLogger(Searcher.class);
+	protected static final Logger logger = Logger.getLogger(Searcher.class);
 
 	/** Complex field name for default contents field */
 	public static final String DEFAULT_CONTENTS_FIELD_NAME = "contents";

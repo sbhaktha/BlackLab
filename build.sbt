@@ -1,5 +1,6 @@
 import sbt._
 import org.allenai.plugins.CoreDependencies
+import org.allenai.plugins.CoreDependencies._
 import sbtrelease._
 import sbtrelease.ReleaseStateTransformations._
 
@@ -17,11 +18,10 @@ libraryDependencies ++= Seq(
   "tomcat" % "jsp-api" % "5.5.23",
   "tomcat" % "servlet-api" % "5.5.23",
   "com.goldmansachs" % "gs-collections" % "6.1.0",
-//  Logging.logbackClassic,
-//  Logging.logbackCore,
-//  Logging.slf4jApi,
-//  "org.slf4j" % "log4j-over-slf4j" % Logging.slf4jVersion)
-  "org.slf4j" % "jcl-over-slf4j" % "1.7.7")
+  Logging.logbackClassic,
+  Logging.logbackCore,
+  Logging.slf4jApi, 
+  "org.slf4j" % "log4j-over-slf4j" % Logging.slf4jVersion)
 
 // Override the problematic new release plugin.
 lazy val releaseProcessSetting = releaseProcess := Seq(

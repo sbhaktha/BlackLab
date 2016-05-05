@@ -37,14 +37,11 @@ import nl.inl.blacklab.index.complex.ComplexFieldUtil;
 import nl.inl.util.ExUtil;
 import nl.inl.util.VersionFile;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.apache.lucene.index.AtomicReader;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.SlowCompositeReaderWrapper;
 import org.apache.lucene.search.FieldCache;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Keeps a forward index of documents, to quickly answer the question
@@ -52,7 +49,7 @@ import org.slf4j.LoggerFactory;
  */
 class ForwardIndexImplV3 extends ForwardIndex {
 
-	protected static final Logger logger = LoggerFactory.getLogger(ForwardIndexImplV3.class);
+	protected static final Logger logger = Logger.getLogger(ForwardIndexImplV3.class);
 
 	/** The number of cached fiids we check to see if this field is set anywhere. */
 	static final int NUMBER_OF_CACHE_ENTRIES_TO_CHECK = 1000;

@@ -44,7 +44,7 @@ import nl.inl.blacklab.search.lucene.HitQueryContext;
 import nl.inl.util.StringUtil;
 import nl.inl.util.ThreadPriority;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.apache.lucene.index.AtomicReaderContext;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.Term;
@@ -53,8 +53,6 @@ import org.apache.lucene.search.BooleanQuery.TooManyClauses;
 import org.apache.lucene.search.spans.SpanQuery;
 import org.apache.lucene.search.spans.Spans;
 import org.apache.lucene.util.Bits;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Represents a list of Hit objects. Also maintains information about the context (concordance)
@@ -62,7 +60,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Hits implements Iterable<Hit> {
 
-	protected static final Logger logger = LoggerFactory.getLogger(Hits.class);
+	protected static final Logger logger = Logger.getLogger(Hits.class);
 
 	/**
 	 * The hits.

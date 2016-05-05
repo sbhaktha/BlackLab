@@ -20,7 +20,7 @@ import nl.inl.util.Json;
 import nl.inl.util.StringUtil;
 import nl.inl.util.json.JSONObject;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.FieldInfo;
 import org.apache.lucene.index.FieldInfos;
@@ -28,14 +28,12 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.MultiFields;
 import org.apache.lucene.index.Terms;
 import org.apache.lucene.util.Bits;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Determines the structure of a BlackLab index.
  */
 public class IndexStructure {
-	protected static final Logger logger = LoggerFactory.getLogger(IndexStructure.class);
+	protected static final Logger logger = Logger.getLogger(IndexStructure.class);
 
 	private static final String METADATA_FILE_NAME = "indexmetadata.json";
 

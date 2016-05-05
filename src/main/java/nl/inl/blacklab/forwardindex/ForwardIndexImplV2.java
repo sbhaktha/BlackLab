@@ -35,13 +35,11 @@ import nl.inl.util.ExUtil;
 import nl.inl.util.MemoryUtil;
 import nl.inl.util.VersionFile;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.apache.lucene.index.AtomicReader;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.SlowCompositeReaderWrapper;
 import org.apache.lucene.search.FieldCache;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Keeps a forward index of documents, to quickly answer the question
@@ -55,7 +53,7 @@ import org.slf4j.LoggerFactory;
 @Deprecated
 class ForwardIndexImplV2 extends ForwardIndex {
 
-	protected static final Logger logger = LoggerFactory.getLogger(ForwardIndexImplV2.class);
+	protected static final Logger logger = Logger.getLogger(ForwardIndexImplV2.class);
 
 	/**
 	 * If true, we want to disable actual I/O and assign random term id's instead.

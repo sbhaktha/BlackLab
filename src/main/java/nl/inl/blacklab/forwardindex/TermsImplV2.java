@@ -25,9 +25,7 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * Keeps a first-come-first-serve list of unique terms.
@@ -42,7 +40,7 @@ import org.slf4j.LoggerFactory;
  * your data if you're still using it!
  */
 class TermsImplV2 extends Terms {
-	protected static final Logger logger = LoggerFactory.getLogger(TermsImplV2.class);
+	protected static final Logger logger = Logger.getLogger(TermsImplV2.class);
 
 	final static int INT_SIZE = Integer.SIZE / Byte.SIZE;
 

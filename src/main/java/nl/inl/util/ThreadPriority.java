@@ -1,9 +1,6 @@
 package nl.inl.util;
 
-//import org.apache.log4j.Logger;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /** Allows us to lower thread priority and/or pause thread.
  *
@@ -23,7 +20,7 @@ public class ThreadPriority {
 		RUNNING
 	}
 
-	protected static final Logger logger = LoggerFactory.getLogger(ThreadPriority.class);
+	protected static final Logger logger = Logger.getLogger(ThreadPriority.class);
 
 	/** Do we want to enable this functionality? (default: false) */
 	private static boolean enabled = false;
