@@ -1,8 +1,10 @@
+import sbt._
+import org.allenai.plugins.CoreDependencies
 import org.allenai.plugins.CoreDependencies._
 import sbtrelease._
-import sbtrelease.ReleasePlugin.ReleaseKeys._
+import sbtrelease.ReleaseStateTransformations._
 
-name := "BlackLab"
+name := "blacklab"
 
 libraryDependencies ++= Seq(
   "org.scalacheck" %% "scalacheck" % "1.12.0" % Test,
@@ -18,49 +20,56 @@ libraryDependencies ++= Seq(
   "com.goldmansachs" % "gs-collections" % "6.1.0",
   Logging.logbackClassic,
   Logging.logbackCore,
-  Logging.slf4jApi,
+  Logging.slf4jApi, 
   "org.slf4j" % "log4j-over-slf4j" % Logging.slf4jVersion)
 
-organization := "nl.inl"
+// Override the problematic new release plugin.
+lazy val releaseProcessSetting = releaseProcess := Seq(
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  publishArtifacts,
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)
 
-publishMavenStyle := true
 
-publishArtifact in Test := false
-
-pomIncludeRepository := { _ => false }
-
-licenses := Seq("Apache 2.0" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt"))
-
-homepage := Some(url("https://github.com/allenai/BlackLab"))
-
-scmInfo := Some(ScmInfo(
-  url("https://github.com/allenai/BlackLab"),
-  "https://github.com/allenai/BlackLab.git"))
-
-ReleaseKeys.publishArtifactsAction := PgpKeys.publishSigned.value
-
-pomExtra :=
-  <developers>
-    <developer>
-      <id>allenai-dev-role</id>
-      <name>Allen Institute for Artificial Intelligence</name>
-      <email>dev-role@allenai.org</email>
-    </developer>
-  </developers>
-
-PublishTo.ai2Public
-
-releaseSettings
+lazy val buildSettings = Seq(
+  organization := "nl.inl.blacklab",
+  scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
+  publishMavenStyle := true,
+  publishArtifact in Test := false,
+  pomIncludeRepository := { _ => false },
+  licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")),
+  homepage := Some(url("https://github.com/allenai/BlackLab")),
+  scmInfo := Some(ScmInfo(
+    url("https://github.com/allenai/BlackLab"),
+    "https://github.com/allenai/BlackLab.git")),
+  releasePublishArtifactsAction := PgpKeys.publishSigned.value,
+  bintrayPackage := s"${organization.value}:${name.value}_${scalaBinaryVersion.value}",
+  pomExtra :=
+    <developers>
+      <developer>
+        <id>allenai-dev-role</id>
+        <name>Allen Institute for Artificial Intelligence</name>
+        <email>dev-role@allenai.org</email>
+      </developer>
+    </developers>)
 
 releaseVersion := { ver =>
-  val snapshot = "(.*-ALLENAI-\\d+)-SNAPSHOT".r
+  val snapshot = "(.*-ALLENAI-\\d+)".r
   ver match {
     case snapshot(v) => v
     case _ => versionFormatError
   }
 }
 
-nextVersion := { ver =>
+releaseNextVersion := { ver =>
   val release = "(.*-ALLENAI)-(\\d+)".r
   // pattern matching on Int
   object Int {
@@ -83,3 +92,10 @@ javacOptions in doc := Seq(
   "-group", "Examples and tests", "nl.inl.blacklab.example:nl.inl.blacklab.indexers.*",
   "-group", "Supporting classes", "nl.inl.blacklab.filter:nl.inl.blacklab.forwardindex:nl.inl.blacklab.externalstorage:nl.inl.blacklab.suggest:nl.inl.util",
   "-Xdoclint:none")
+
+
+lazy val blacklabRoot = Project(
+  id = "blacklabRoot",
+  base = file("."),
+  settings = buildSettings ++ releaseProcessSetting
+).enablePlugins(LibraryPlugin)
