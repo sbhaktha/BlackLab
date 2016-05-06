@@ -41,6 +41,7 @@ lazy val releaseProcessSetting = releaseProcess := Seq(
 
 lazy val buildSettings = Seq(
   organization := "nl.inl.blacklab",
+  crossScalaVersions := Seq(defaultScalaVersion),
   scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
   publishMavenStyle := true,
   publishArtifact in Test := false,
