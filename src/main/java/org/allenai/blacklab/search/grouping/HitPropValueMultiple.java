@@ -1,0 +1,57 @@
+package org.allenai.blacklab.search.grouping;
+
+import org.allenai.blacklab.search.Hits;
+import org.allenai.util.ArrayUtil;
+
+public class HitPropValueMultiple extends HitPropValue {
+	HitPropValue[] value;
+
+	public HitPropValueMultiple(HitPropValue[] value) {
+		this.value = value;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		return ArrayUtil.compareArrays(value, ((HitPropValueMultiple) o).value);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 0;
+		for (HitPropValue v: value) {
+			result ^= v.hashCode();
+		}
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder b = new StringBuilder();
+		for (HitPropValue v: value) {
+			if (b.length() > 0)
+				b.append(" / ");
+			b.append(v.toString());
+		}
+		return b.toString();
+	}
+
+	public static HitPropValueMultiple deserialize(Hits hits, String info) {
+		String[] strValues = PropValSerializeUtil.splitMultiple(info);
+		HitPropValue[] values = new HitPropValue[strValues.length];
+		int i = 0;
+		for (String strValue: strValues) {
+			values[i] = HitPropValue.deserialize(hits, strValue);
+			i++;
+		}
+		return new HitPropValueMultiple(values);
+	}
+
+	@Override
+	public String serialize() {
+		String[] valuesSerialized = new String[value.length];
+		for (int i = 0; i < value.length; i++) {
+			valuesSerialized[i] = value[i].serialize();
+		}
+		return PropValSerializeUtil.combineMultiple(valuesSerialized);
+	}
+}

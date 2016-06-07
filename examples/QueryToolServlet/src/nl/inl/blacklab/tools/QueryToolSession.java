@@ -7,7 +7,8 @@ import java.io.Writer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import nl.inl.blacklab.search.Searcher;
+import org.allenai.blacklab.search.Searcher;
+import org.allenai.blacklab.tools.QueryTool;
 
 /**
  * Represents the backend for one tab in which the QueryTool page is open.

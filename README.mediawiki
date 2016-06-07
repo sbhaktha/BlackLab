@@ -1,4 +1,10 @@
-== What is BlackLab? ==
+== BLACKLAB ==
+
+This is a fork of the open source Java implementation of BlackLab (https://github.com/INL/BlackLab) ported to work with SBT, and has some fixes to reduce memory usage.
+
+It gets published to Maven Central under package name `org.allenai.blacklab`. All package referenences are changed from `nl.inl` to `org.allenai` in the Java source code.
+
+=== What is BlackLab? ===
 
 BlackLab is a corpus retrieval engine built on top of [http://lucene.apache.org/ Apache Lucene]. It allows fast, complex searches with accurate hit highlighting on large, tagged and annotated, bodies of text. It was developed at the Institute of Dutch Lexicology (INL) to provide a fast and feature-rich search
 interface on our historical and contemporary text corpora.
