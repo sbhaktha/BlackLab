@@ -1,4 +1,4 @@
-== BLACKLAB ==
+== BlackLab ==
 
 This is a fork of the open source Java implementation of BlackLab (https://github.com/INL/BlackLab) ported to work with SBT, and has some fixes to reduce memory usage.
 
