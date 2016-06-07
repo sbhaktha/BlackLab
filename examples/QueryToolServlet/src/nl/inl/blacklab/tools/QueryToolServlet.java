@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import nl.inl.blacklab.search.Searcher;
-import nl.inl.util.PropertiesUtil;
+import org.allenai.blacklab.search.Searcher;
+import org.allenai.util.PropertiesUtil;
 
 /**
  * The QueryTool servlet, which gives you command-driven access to
